@@ -13,10 +13,9 @@ import Medium from "../../assets/Medium";
 import Github from "../../assets/Github";
 import Hex from "../../assets/Hex";
 
-import { connectorTypes, SOCIAL_LINKS } from "../constants";
+import { connectorNames, connectorTypes, SOCIAL_LINKS } from "../constants";
 
 import useStyles from "./styles";
-
 const MainContent = ({ values, setValues }) => {
   const context = useWeb3React();
   const classes = useStyles();
@@ -113,6 +112,7 @@ const MainContent = ({ values, setValues }) => {
             {Object.keys(connectorTypes).map(con => {
               const current = connectorTypes[con];
               const disabled = current === connector;
+              const name = connectorNames[con];
 
               return (
                 <Grid item sm={4} key={con}>
@@ -125,7 +125,7 @@ const MainContent = ({ values, setValues }) => {
                     disabled={disabled}
                     className={classes.optionButton}
                   >
-                    <div className={classes.optionButton}>{con}</div>
+                    <div className={classes.optionButton}>{name}</div>
                   </Fab>
                 </Grid>
               );

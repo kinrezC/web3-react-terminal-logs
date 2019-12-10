@@ -16,6 +16,15 @@ export const connectorTypes = {
   WalletConnect: walletconnect
 };
 
+export const connectorNames = {
+  Injected: "metamask",
+  Portis: "portis",
+  Fortmatic: "fortmatic",
+  Network: "infura",
+  Torus: "torus",
+  WalletConnect: "walletconnect"
+};
+
 export const SOCIAL_LINKS = {
   TWITTER: "https://twitter.com/terminaldotco",
   GITHUB: "https://github.com/Terminal-Systems",
