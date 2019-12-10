@@ -50,6 +50,10 @@ const MainContent = ({ values, setValues }) => {
             setBlockNumber(null);
           }
         });
+      return () => {
+        stale = true;
+        setBlockNumber(null);
+      };
     }
   }, [library, chainId]);
 
@@ -69,8 +73,13 @@ const MainContent = ({ values, setValues }) => {
             setBalance(null);
           }
         });
+
+      return () => {
+        stale = true;
+        setBlockNumber(null);
+      };
     }
-  }, [library, account]);
+  }, [library, account, chainId]);
 
   const handleChange = prop => event => {
     if (connector) {
