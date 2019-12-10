@@ -5,10 +5,11 @@
   "dependencies": {
     "@material-ui/core": "^4.7.2",
     "@material-ui/styles": "^4.7.1",
-    "@terminal-packages/sdk": "^1.1.0",
+    "@terminal-packages/sdk": "0.1.36",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@web3-react/core": "^6.0.0-beta.19",
     "@web3-react/fortmatic-connector": "^6.0.0-beta.19",
     "@web3-react/injected-connector": "^6.0.0-beta.24",
     "@web3-react/network-connector": "^6.0.0-beta.19",

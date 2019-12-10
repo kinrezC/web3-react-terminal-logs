@@ -12,15 +12,19 @@ const App = () => {
   });
 
   const getLibrary = provider => {
-    console.log(provider);
-    const library = new Web3(
-      new TerminalHttpProvider({
-        customHttpProvider: provider,
-        apiKey: values.apiKey,
-        projectId: values.projectId,
-        source: "MetaMask"
-      })
-    );
+    let library;
+    if (provider._metamask) {
+      library = new Web3(window.terminal.ethereum);
+    } else {
+      library = new Web3(
+        new TerminalHttpProvider({
+          customHttpProvider: provider,
+          apiKey: values.apiKey,
+          projectId: values.projectId,
+          source: "web3-react"
+        })
+      );
+    }
     library.pollingInterval = 8000;
     return library;
   };

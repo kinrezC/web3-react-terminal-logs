@@ -35,15 +35,39 @@ const MainContent = ({ values, setValues }) => {
 
   useEffect(() => {
     if (library) {
-      library.eth.getBlockNumber().then(r => setBlockNumber(r));
+      let stale = false;
+
+      library.eth
+        .getBlockNumber()
+        .then(r => {
+          if (!stale) {
+            setBlockNumber(r);
+          }
+        })
+        .catch(() => {
+          if (!stale) {
+            setBlockNumber(null);
+          }
+        });
     }
-  }, [library]);
+  }, [library, chainId]);
 
   useEffect(() => {
     if (library && account) {
+      let stale = false;
+
       library.eth
         .getBalance(account)
-        .then(r => setBalance(library.utils.fromWei(r, "ether")));
+        .then(r => {
+          if (!stale) {
+            setBalance(library.utils.fromWei(r, "ether"));
+          }
+        })
+        .catch(() => {
+          if (!stale) {
+            setBalance(null);
+          }
+        });
     }
   }, [library, account]);
 
