@@ -34,7 +34,8 @@ const useStyles = makeStyles({
     fontFamily: "Nunito Sans",
     letterSpacing: 1.2,
     fontSize: 50,
-    fontWeight: 235
+    fontWeight: 235,
+    marginTop: 35
   },
   optionsContainer: {
     marginTop: 45,
