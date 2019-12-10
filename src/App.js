@@ -24,10 +24,14 @@ const getSource = provider => {
 };
 
 const setWeb3Version = provider => {
-  if (provider.isTorus) {
-    return Web3Versions.one;
-  } else {
+  if (provider.isPortis) {
     return Web3Versions.two;
+  } else if (provider.isWalletConnect) {
+    return Web3Versions.two;
+  } else if (provider.isFortmatic) {
+    return Web3Versions.two;
+  } else {
+    return Web3Versions.one;
   }
 };
 
