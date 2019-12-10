@@ -24,21 +24,33 @@ const MainContent = ({ values, setValues }) => {
   const [blockNumber, setBlockNumber] = useState();
   const [balance, setBalance] = useState();
 
-  const { library, account, activate, connector, chainId } = context;
+  const {
+    library,
+    account,
+    activate,
+    connector,
+    chainId,
+    deactivate
+  } = context;
 
   useEffect(() => {
     if (library) {
       library.eth.getBlockNumber().then(r => setBlockNumber(r));
     }
-  }, [library, chainId]);
+  }, [library]);
 
   useEffect(() => {
     if (library && account) {
-      library.eth.getBalance(account).then(r => setBalance(r));
+      library.eth
+        .getBalance(account)
+        .then(r => setBalance(library.utils.fromWei(r, "ether")));
     }
   }, [library, account]);
 
   const handleChange = prop => event => {
+    if (connector) {
+      deactivate(connector);
+    }
     setValues({ ...values, [prop]: event.target.value });
   };
 
@@ -69,7 +81,7 @@ const MainContent = ({ values, setValues }) => {
               const disabled = current === connector;
 
               return (
-                <Grid item sm={4}>
+                <Grid item sm={4} key={con}>
                   <Fab
                     key={con}
                     onClick={() => {
