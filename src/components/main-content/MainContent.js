@@ -38,8 +38,22 @@ const MainContent = ({ values, setValues }) => {
   const context = useWeb3React();
   const classes = useStyles();
   const [activeConnector, setActiveConnector] = useState();
+  const [blockNumber, setBlockNumber] = useState();
+  const [balance, setBalance] = useState();
 
   const { library, account, activate, connector, chainId } = context;
+
+  useEffect(() => {
+    if (library) {
+      library.eth.getBlockNumber().then(r => setBlockNumber(r));
+    }
+  }, [library, chainId]);
+
+  useEffect(() => {
+    if (library && account) {
+      library.eth.getBalance(account).then(r => setBalance(r));
+    }
+  }, [library, account]);
 
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value });
@@ -59,6 +73,12 @@ const MainContent = ({ values, setValues }) => {
               </Typography>
               <Typography className={classes.info}>
                 Account: {account || "None"}
+              </Typography>
+              <Typography className={classes.info}>
+                Block Number: {blockNumber || "None"}
+              </Typography>
+              <Typography className={classes.info}>
+                Balance: {balance || "None"}
               </Typography>
             </div>
             <div className={classes.optionsContainer}>

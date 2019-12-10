@@ -49,7 +49,7 @@ const useStyles = makeStyles({
     width: 150
   },
   connectorInfoContainer: {
-    marginTop: 45
+    marginTop: 12
   },
   inputsContainer: {
     marginTop: 45,
