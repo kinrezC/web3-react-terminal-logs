@@ -53,7 +53,6 @@ const App = () => {
         })
       );
     }
-    console.log(library);
     library.pollingInterval = 8000;
     return library;
   };
