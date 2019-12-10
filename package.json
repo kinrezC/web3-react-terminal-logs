@@ -5,10 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.7.2",
     "@material-ui/styles": "^4.7.1",
-    "@terminal-packages/sdk": "1.1.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@terminal-packages/sdk": "1.0.36",
     "@web3-react/core": "^6.0.0-beta.19",
     "@web3-react/fortmatic-connector": "^6.0.0-beta.19",
     "@web3-react/injected-connector": "^6.0.0-beta.24",

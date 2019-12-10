@@ -10,17 +10,16 @@ import Web3 from "web3";
 import MainContent from "./components/main-content/MainContent";
 
 const getSource = provider => {
-  switch (provider) {
-    case provider.isTorus:
-      return SourceType.Torus;
-    case provider.isPortis:
-      return SourceType.Portis;
-    case provider.isWalletConnect:
-      return "WalletConnect";
-    case provider.isFortmatic:
-      return "Fortmatic";
-    default:
-      return SourceType.Web3ProviderEngine;
+  if (provider.isTorus) {
+    return SourceType.Torus;
+  } else if (provider.isPortis) {
+    return SourceType.Portis;
+  } else if (provider.isWalletConnect) {
+    return "WalletConnect";
+  } else if (provider.isFortmatic) {
+    return "Fortmatic";
+  } else {
+    return SourceType.Web3ProviderEngine;
   }
 };
 
@@ -34,8 +33,8 @@ const setWeb3Version = provider => {
 
 const App = () => {
   const [values, setValues] = useState({
-    apiKey: "IYFLu2akdq6D4WhIqhZVVw==",
-    projectId: "ryAqzgjMRZoJWnxv"
+    apiKey: "Z0CsA9B5xAkCjfw0kcKh6g==",
+    projectId: "MrBOKJVOnrlAgnRw"
   });
 
   const getLibrary = provider => {
