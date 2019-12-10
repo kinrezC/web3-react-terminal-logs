@@ -22,8 +22,8 @@ const useStyles = makeStyles({
     justifyContent: "center"
   },
   contentContainer: {
-    width: 830,
-    minWidth: 830,
+    width: 725,
+    minWidth: 725,
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   title: {
     fontFamily: "Nunito Sans",
     letterSpacing: 1.2,
-    fontSize: 50,
+    fontSize: 44,
     fontWeight: 235,
     marginTop: 35
   },
