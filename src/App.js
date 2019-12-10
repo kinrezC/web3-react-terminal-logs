@@ -1,9 +1,36 @@
 import React, { useState } from "react";
 import { Web3ReactProvider } from "@web3-react/core";
-import { TerminalHttpProvider } from "@terminal-packages/sdk";
+import {
+  TerminalHttpProvider,
+  SourceType,
+  Web3Versions
+} from "@terminal-packages/sdk";
 import Web3 from "web3";
 
 import MainContent from "./components/main-content/MainContent";
+
+const getSource = provider => {
+  switch (provider) {
+    case provider.isTorus:
+      return SourceType.Torus;
+    case provider.isPortis:
+      return SourceType.Portis;
+    case provider.isWalletConnect:
+      return "WalletConnect";
+    case provider.isFortmatic:
+      return "Fortmatic";
+    default:
+      return SourceType.Web3ProviderEngine;
+  }
+};
+
+const setWeb3Version = provider => {
+  if (provider.isTorus) {
+    return Web3Versions.one;
+  } else {
+    return Web3Versions.two;
+  }
+};
 
 const App = () => {
   const [values, setValues] = useState({
@@ -21,10 +48,12 @@ const App = () => {
           customHttpProvider: provider,
           apiKey: values.apiKey,
           projectId: values.projectId,
-          source: "web3-react"
+          source: getSource(provider),
+          web3Version: setWeb3Version(provider)
         })
       );
     }
+    console.log(library);
     library.pollingInterval = 8000;
     return library;
   };

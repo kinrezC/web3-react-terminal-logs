@@ -44,7 +44,8 @@ const MainContent = ({ values, setValues }) => {
             setBlockNumber(r);
           }
         })
-        .catch(() => {
+        .catch(e => {
+          console.log(e);
           if (!stale) {
             setBlockNumber(null);
           }

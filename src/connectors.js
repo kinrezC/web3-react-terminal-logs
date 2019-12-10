@@ -26,7 +26,7 @@ export const torus = new TorusConnector({
 });
 
 export const network = new NetworkConnector({
-  urls: { 1: "https://mainnet.infura.io/v3/1c3acca035dd41dfbf400abac71e59a7" },
+  urls: { 1: "http://mainnet.infura.io/v3/1c3acca035dd41dfbf400abac71e59a7" },
   defaultChainId: 1,
   pollingInterval: POLLING_INTERVAL
 });
