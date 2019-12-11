@@ -8,14 +8,14 @@ import {
   Typography
 } from "@material-ui/core";
 
-import Twitter from "../../assets/Twitter";
-import Medium from "../../assets/Medium";
-import Github from "../../assets/Github";
-import Hex from "../../assets/Hex";
+import Twitter from "../assets/Twitter";
+import Medium from "../assets/Medium";
+import Github from "../assets/Github";
+import Hex from "../assets/Hex";
 
 import { connectorNames, connectorTypes, SOCIAL_LINKS } from "../constants";
-
 import useStyles from "./styles";
+
 const MainContent = ({ values, setValues }) => {
   const context = useWeb3React();
   const classes = useStyles();

@@ -1,39 +1,10 @@
 import React, { useState } from "react";
 import { Web3ReactProvider } from "@web3-react/core";
-import {
-  TerminalHttpProvider,
-  SourceType,
-  Web3Versions
-} from "@terminal-packages/sdk";
+import { TerminalHttpProvider } from "@terminal-packages/sdk";
 import Web3 from "web3";
 
-import MainContent from "./components/main-content/MainContent";
-
-const getSource = provider => {
-  if (provider.isTorus) {
-    return SourceType.Torus;
-  } else if (provider.isPortis) {
-    return SourceType.Portis;
-  } else if (provider.isWalletConnect) {
-    return "WalletConnect";
-  } else if (provider.isFortmatic) {
-    return "Fortmatic";
-  } else {
-    return SourceType.Web3ProviderEngine;
-  }
-};
-
-const setWeb3Version = provider => {
-  if (provider.isPortis) {
-    return Web3Versions.two;
-  } else if (provider.isWalletConnect) {
-    return Web3Versions.two;
-  } else if (provider.isFortmatic) {
-    return Web3Versions.two;
-  } else {
-    return Web3Versions.one;
-  }
-};
+import { setSource, setWeb3Version } from "./constants";
+import MainContent from "./components/MainContent";
 
 const App = () => {
   const [values, setValues] = useState({
@@ -51,7 +22,7 @@ const App = () => {
           customHttpProvider: provider,
           apiKey: values.apiKey,
           projectId: values.projectId,
-          source: getSource(provider),
+          source: setSource(provider),
           web3Version: setWeb3Version(provider)
         })
       );
