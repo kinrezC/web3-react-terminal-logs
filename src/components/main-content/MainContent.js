@@ -87,6 +87,10 @@ const MainContent = ({ values, setValues }) => {
     setValues({ ...values, [prop]: event.target.value });
   };
 
+  const signMessage = () => {
+    library.eth.sign("Hello Terminal!", account).then(console.log);
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.appContainer}>
@@ -130,6 +134,15 @@ const MainContent = ({ values, setValues }) => {
                 </Grid>
               );
             })}
+          </div>
+          <div className={classes.signButtonContainer}>
+            <Fab
+              className={classes.optionButton}
+              disabled={!activeConnector || !account}
+              onClick={() => signMessage()}
+            >
+              <div className={classes.optionButton}>Sign Message</div>
+            </Fab>
           </div>
           <div className={classes.inputsContainer}>
             <div className={classes.input}>

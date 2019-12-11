@@ -59,6 +59,9 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center"
   },
+  signButtonContainer: {
+    marginTop: 35
+  },
   input: {
     marginTop: 15
   },
